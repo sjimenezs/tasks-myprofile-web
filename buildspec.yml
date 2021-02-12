@@ -1,0 +1,25 @@
+version: 0.1
+phases:
+  pre_build:
+    commands:
+      - wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.4.0.2170-linux.zip      
+      - unzip sonar-scanner-cli-4.4.0.2170-linux.zip
+      - ./sonar-scanner-4.4.0.2170-linux/bin/sonar-scanner   -Dsonar.organization=sjimenezs   -Dsonar.projectKey=sjimenezs_sjimenezs-tasks-myprofile-web   -Dsonar.sources=./src   -Dsonar.host.url=https://sonarcloud.io
+      - export COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)      
+      - echo Installing source NPM dependencies...
+      - yarn install
+  build:
+    commands:
+      - free -m
+      - export NODE_OPTIONS=--max_old_space_size=6144
+      - echo Build started on `date`
+      - rm public/keycloak.json
+      - mv public/keycloak.prod public/keycloak.json
+      - echo   $COMMIT_HASH
+      - export REACT_APP_VERSION=$COMMIT_HASH && export REACT_APP_DATE="`date`" && export REACT_APP_KEYCLOAK_URL=https://login.fooddrive.com.co && export REACT_APP_BASE_API_URL=https://api.fooddrive.com.co && yarn run build --max-old-space-size=6144   
+  post_build:
+    commands:      
+artifacts:
+  files:
+    - '**/*'
+  base-directory: build
