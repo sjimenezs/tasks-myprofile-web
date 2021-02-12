@@ -12,11 +12,9 @@ phases:
     commands:
       - free -m
       - export NODE_OPTIONS=--max_old_space_size=6144
-      - echo Build started on `date`
-      - rm public/keycloak.json
-      - mv public/keycloak.prod public/keycloak.json
+      - echo Build started on `date`      
       - echo   $COMMIT_HASH
-      - export REACT_APP_VERSION=$COMMIT_HASH && export REACT_APP_DATE="`date`" && export REACT_APP_KEYCLOAK_URL=https://login.fooddrive.com.co && export REACT_APP_BASE_API_URL=https://api.fooddrive.com.co && yarn run build --max-old-space-size=6144   
+      - export REACT_APP_VERSION=$COMMIT_HASH && export REACT_APP_DATE="`date`" && export REACT_APP_BASE_API_URL=https://apidemo.samueljimenez.co && yarn run build --max-old-space-size=6144   
   post_build:
     commands:      
 artifacts:
