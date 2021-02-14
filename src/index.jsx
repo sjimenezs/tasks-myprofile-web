@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import HomeView from './home/HomeView';
+import App from './App';
 import './index.css';
 import bootstrapLocale from './localeutil';
 
@@ -10,7 +10,7 @@ async function startApp() {
   ReactDOM.render(
     <React.StrictMode>
       <Bootstrap>
-        <HomeView />
+        <App />
       </Bootstrap>
     </React.StrictMode>,
     document.getElementById('root'),
