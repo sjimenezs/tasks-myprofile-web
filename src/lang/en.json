@@ -1,0 +1,8 @@
+{
+  "enter":[{"type": 0, "value": "Enter"}],
+  "my genome": [{"type": 0, "value": "My Genome"}],  
+  "torre.co username":[{"type": 0, "value": "Torre.co username"}],
+  "username required":[{"type": 0, "value": "Torre.co username is required."}],
+  "error.general":[{"type": 0, "value": "Something is wrong, retry it in a couple of minutes, please."}],
+  "error.usernotexists":[{"type": 0, "value": "Torre.co account not found."}]
+}

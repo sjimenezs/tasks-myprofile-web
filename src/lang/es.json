@@ -1,0 +1,8 @@
+{
+  "my genome": [{"type": 0, "value": "Mi Genoma"}],
+  "torre.co username":[{"type": 0, "value": "Nombre de usuario de Torre.co"}],
+  "enter":[{"type": 0, "value": "Ingresar"}],  
+  "username required":[{"type": 0, "value": "El nombre de usuariod de Torre.co es obligatorio."}],
+  "error.general":[{"type": 0, "value": "Algo malo ha ocurrido, por favor reintente en un par de minutos."}],
+  "error.usernotexists":[{"type": 0, "value": "No se encontró la cuenta de Torre.co"}]
+}

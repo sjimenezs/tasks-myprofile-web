@@ -10,7 +10,7 @@ phases:
       - yarn install
   build:
     commands:
-      - free -m
+      - yarn test -- --watchAll=false
       - export NODE_OPTIONS=--max_old_space_size=6144
       - echo Build started on `date`      
       - echo   $COMMIT_HASH
