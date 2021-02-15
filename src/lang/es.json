@@ -1,8 +1,15 @@
 {
-  "my genome": [{"type": 0, "value": "Mi Genoma"}],
-  "torre.co username":[{"type": 0, "value": "Nombre de usuario de Torre.co"}],
-  "enter":[{"type": 0, "value": "Ingresar"}],  
-  "username required":[{"type": 0, "value": "El nombre de usuariod de Torre.co es obligatorio."}],
-  "error.general":[{"type": 0, "value": "Algo malo ha ocurrido, por favor reintente en un par de minutos."}],
-  "error.usernotexists":[{"type": 0, "value": "No se encontró la cuenta de Torre.co"}]
+  "enter": "Ingresar",
+  "my genome": "Alineación a Trabajos",
+  "torre.co username": "Nombre de usuario en Torre.co",
+  "username required": "El nombre de usuario en Torre.co es obligatorio.",
+  "fittojob": "Coincidencia de trabajos",
+  "fit to job header": "Coincidencia de trabajos: Muestra cuentos trabajos estan disponibles por porcentaje de coincidencia de sus habilidades. {explainText}",
+  "no fit to job": "No hay trabajos alineados con sus habilidades.",
+  "value fit to job": "{count} trabajos tienen {percent}% of coincidencia.",
+  "error.general": "Algo malo ha pasado, por favor intente nuevamente en un par de minutos.",
+  "error.usernotexists": "No se encotró la cuenta de Torre.co",
+  "jobsfits.header": "Porcentajes de Coindidencia a Trabajos",
+  "jobs": "Trabajos",
+  "skills":"Habilidades"
 }

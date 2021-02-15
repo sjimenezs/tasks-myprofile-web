@@ -1,13 +1,15 @@
 {
-  "enter":"Enter",
-  "my genome": "Jobs Fit",  
-  "torre.co username":"Torre.co username",
-  "username required":"Torre.co username is required.",
-  "fittojob":"Fit to job",
-  "fit to job header":"Fit to job: It Shows how many jobs are available per percent of fit job. {explainText}",
-  "no fit to job":"There are not jobs that fit.",
-  "value fit to job":"{count} jobs have {percent}% of match.",
-  "error.general":"Something is wrong, retry it in a couple of minutes, please.",
-  "error.usernotexists":"Torre.co account not found.",
-  "jobsfits.header":"Percent Jobs Fit"
+  "enter": "Enter",
+  "my genome": "Jobs Fit",
+  "torre.co username": "Torre.co username",
+  "username required": "Torre.co username is required.",
+  "fittojob": "Fit to job",
+  "fit to job header": "Fit to job: It Shows how many jobs are available per percent of fit job. {explainText}",
+  "no fit to job": "There are not jobs that fit.",
+  "value fit to job": "{count} jobs have {percent}% of match.",
+  "error.general": "Something is wrong, retry it in a couple of minutes, please.",
+  "error.usernotexists": "Torre.co account not found.",
+  "jobsfits.header": "Percent Jobs Fit",
+  "jobs": "jobs",
+  "skills": "Skills"
 }

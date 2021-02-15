@@ -86,6 +86,11 @@ export default function JobsFitView() {
     [fitToJob],
   );
 
+  const jobsLabel = useMemo(
+    () => formatMessage({ id: 'jobs' }),
+    [],
+  );
+
   const classes = useStyles();
 
   return (
@@ -106,8 +111,7 @@ export default function JobsFitView() {
                   <Card style={{ width: '100%' }}>
                     <CardHeader title={jobPerSkill.name} />
                     <CardContent>
-                      {jobPerSkill.count}
-                      jobs
+                      {`${jobPerSkill.count} ${jobsLabel}`}
                     </CardContent>
                   </Card>
                 </Grid>
