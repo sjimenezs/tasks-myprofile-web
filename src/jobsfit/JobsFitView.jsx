@@ -25,6 +25,7 @@ function buildFitToJobExplainText(fitToJob, formatMessage) {
 }
 
 function renderJobIndicator(classes, formatMessage, dataToRender, explainText, indicatorName) {
+  const parsedDataToRender = dataToRender.map((item) => ({ label: `${item.percent}%`, value: item.count }));
   return (
     <div className={classes.indicatorContainer} role="img" aria-label={formatMessage({ id: 'fit to job header' }, { explainText })}>
       <Card style={{ width: '100%' }}>
@@ -42,7 +43,7 @@ function renderJobIndicator(classes, formatMessage, dataToRender, explainText, i
             (dataToRender && dataToRender.length > 0)
             && (
               <PieChart
-                data={dataToRender}
+                data={parsedDataToRender}
                 title={{
                   visible: false,
                 }}
@@ -51,7 +52,7 @@ function renderJobIndicator(classes, formatMessage, dataToRender, explainText, i
                 }}
                 radius={0.8}
                 angleField="value"
-                colorField="type"
+                colorField="label"
                 label={{
                   visible: true,
                   type: 'outer',

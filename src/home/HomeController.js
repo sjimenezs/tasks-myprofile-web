@@ -5,8 +5,9 @@ import ErrorCodes from '../utils/ErrorCodes';
 import Logger from '../utils/Logger';
 
 export default class HomeController extends BaseController {
-  constructor() {
+  constructor({ history }) {
     super();
+    this.history = history;
     this.username = new BehaviorSubject('');
     this.usernameValidationErrors = new BehaviorSubject(undefined);
     this.subscriptions = [];
@@ -18,7 +19,7 @@ export default class HomeController extends BaseController {
     }
     const usernameValue = this.username.getValue();
     try {
-      const response = await ApiCaller.fetch('/profile/v1/checkuser', 'POST', { username: usernameValue });
+      const response = await ApiCaller.fetch('/profile/v1/login', 'POST', { username: usernameValue });
       if (response.isError) {
         this.usernameValidationErrors.next(response.errorCodes[0]);
       }
@@ -26,6 +27,7 @@ export default class HomeController extends BaseController {
         this.usernameValidationErrors.next('error.usernotexists');
         return;
       }
+      this.history.push({ pathname: '/jobs', state: { username: usernameValue } });
     } catch (e) {
       Logger.logError(e);
       this.usernameValidationErrors.next(ErrorCodes.GENERAL_ERROR);

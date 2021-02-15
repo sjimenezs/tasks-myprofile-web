@@ -1,4 +1,5 @@
 import React, { useState, useCallback, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
@@ -23,8 +24,9 @@ const useStyles = createUseStyles({
 });
 
 export default function HomeView() {
+  const history = useHistory();
   const { formatMessage } = useIntl();
-  const [controller] = useState(() => new HomeController());
+  const [controller] = useState(() => new HomeController({ history }));
   const [username, setUsername] = useState('');
   const [usernameValidationErrors, setUsernameValidationErrors] = useState('');
 

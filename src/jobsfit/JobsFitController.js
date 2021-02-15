@@ -14,7 +14,7 @@ export default class JobsFitController extends BaseController {
         this.pageErrors.next(response.errorCode);
       }
 
-      this.fitToJob.next(response.ok);
+      this.fitToJob.next(response.ok.jobsFit);
     } catch (e) {
       Logger.logError(e);
       this.pageErrors.next(ErrorCodes.GENERAL_ERROR);
