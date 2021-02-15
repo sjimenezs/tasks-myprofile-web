@@ -25,7 +25,7 @@ function buildFitToJobExplainText(fitToJob, formatMessage) {
 }
 
 function renderJobIndicator(classes, formatMessage, dataToRender, explainText, indicatorName) {
-  const parsedDataToRender = dataToRender.map((item) => ({ label: `${item.percent}%`, value: item.count }));
+  const parsedDataToRender = dataToRender ? dataToRender.map((item) => ({ label: `${item.percent}%`, value: item.count })) : [];
   return (
     <div className={classes.indicatorContainer} role="img" aria-label={formatMessage({ id: 'fit to job header' }, { explainText })}>
       <Card style={{ width: '100%' }}>
@@ -101,7 +101,7 @@ export default function JobsFitView() {
           </Grid>
           <Grid container item xs={12} spacing={2}>
             {
-              jobsPerSkill && jobsPerSkill.map((jobPerSkill) => (
+              (jobsPerSkill && jobsPerSkill.length > 0) && jobsPerSkill.map((jobPerSkill) => (
                 <Grid item xs={4} sm={3} md={2}>
                   <Card style={{ width: '100%' }}>
                     <CardHeader title={jobPerSkill.name} />

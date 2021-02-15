@@ -23,6 +23,14 @@ async function jobsFitNoData(url) {
     };
   }
 
+  if (url === '/profile/v1/countjobsperskill') {
+    return {
+      ok: true,
+      status: 200,
+      json: async () => ({ isError: false, ok: { skills: [] } }),
+    };
+  }
+
   return {
     ok: true,
     status: 200,
@@ -35,7 +43,15 @@ async function jobsFit(url) {
     return {
       ok: true,
       status: 200,
-      json: async () => ({ isError: false, ok: [{ percent: '50', count: 10 }] }),
+      json: async () => ({ isError: false, ok: { jobsFit: [{ percent: 50, count: 10 }] } }),
+    };
+  }
+
+  if (url === '/profile/v1/countjobsperskill') {
+    return {
+      ok: true,
+      status: 200,
+      json: async () => ({ isError: false, ok: { skills: [] } }),
     };
   }
 
