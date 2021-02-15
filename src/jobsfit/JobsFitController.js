@@ -9,9 +9,14 @@ export default class JobsFitController extends BaseController {
 
   jobsPerSkill = new BehaviorSubject([]);
 
+  constructor({ username }) {
+    super();
+    this.username = username;
+  }
+
   async fetchFitToJob() {
     try {
-      const response = await ApiCaller.fetch('/profile/v1/fetchfittojob', 'POST', { username: 'seduardojs' });
+      const response = await ApiCaller.fetch('/profile/v1/fetchfittojob', 'POST', { username: this.username });
       if (response.isError) {
         this.pageErrors.next(response.errorCode);
       }
@@ -25,7 +30,7 @@ export default class JobsFitController extends BaseController {
 
   async fetchJobsPerSkill() {
     try {
-      const response = await ApiCaller.fetch('/profile/v1/countjobsperskill', 'POST', { username: 'seduardojs' });
+      const response = await ApiCaller.fetch('/profile/v1/countjobsperskill', 'POST', { username: this.username });
       if (response.isError) {
         this.pageErrors.next(response.errorCode);
       }

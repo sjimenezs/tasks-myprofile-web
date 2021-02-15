@@ -27,7 +27,7 @@ export default class HomeController extends BaseController {
         this.usernameValidationErrors.next('error.usernotexists');
         return;
       }
-      this.history.push({ pathname: '/jobs', state: { username: usernameValue } });
+      this.history.push({ pathname: '/jobs', state: { username: usernameValue }, search: `?username=${usernameValue}` });
     } catch (e) {
       Logger.logError(e);
       this.usernameValidationErrors.next(ErrorCodes.GENERAL_ERROR);

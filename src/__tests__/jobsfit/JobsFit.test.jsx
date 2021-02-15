@@ -62,6 +62,16 @@ async function jobsFit(url) {
   };
 }
 
+jest.mock('react-router-dom', () => ({
+  useLocation: () => ({
+    pathname: '/jobs',
+    search: '?username=test',
+    hash: '',
+    state: null,
+    key: '5nvxpbdafa',
+  }),
+}));
+
 describe('JobsFitView', () => {
   test('Renders component', async () => {
     await loadScreen();

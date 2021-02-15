@@ -7,8 +7,13 @@ import { PieChart } from 'bizcharts';
 import { useIntl } from 'react-intl';
 import { createUseStyles } from 'react-jss';
 import Typography from '@material-ui/core/Typography';
+import { useLocation } from 'react-router-dom';
 import LayoutBase from '../layout/LayoutBase';
 import JobsFitController from './JobsFitController';
+
+function useQuery() {
+  return new URLSearchParams(useLocation().search);
+}
 
 const useStyles = createUseStyles({
   indicatorContainer: {
@@ -68,8 +73,9 @@ function renderJobIndicator(classes, formatMessage, dataToRender, explainText, i
 }
 
 export default function JobsFitView() {
+  const query = useQuery();
   const { formatMessage } = useIntl();
-  const [controller] = useState(() => new JobsFitController());
+  const [controller] = useState(() => new JobsFitController({ username: query.get('username') }));
 
   const [fitToJob, setFitToJob] = useState([]);
   const [jobsPerSkill, setJobsPerSkill] = useState([]);
