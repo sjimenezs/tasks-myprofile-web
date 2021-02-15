@@ -7,6 +7,8 @@ import Logger from '../utils/Logger';
 export default class JobsFitController extends BaseController {
   fitToJob = new BehaviorSubject([]);
 
+  jobsPerSkill = new BehaviorSubject([]);
+
   async fetchFitToJob() {
     try {
       const response = await ApiCaller.fetch('/profile/v1/fetchfittojob', 'POST', { username: 'seduardojs' });
@@ -21,7 +23,25 @@ export default class JobsFitController extends BaseController {
     }
   }
 
+  async fetchJobsPerSkill() {
+    try {
+      const response = await ApiCaller.fetch('/profile/v1/countjobsperskill', 'POST', { username: 'seduardojs' });
+      if (response.isError) {
+        this.pageErrors.next(response.errorCode);
+      }
+
+      this.jobsPerSkill.next(response.ok.skills);
+    } catch (e) {
+      Logger.logError(e);
+      this.pageErrors.next(ErrorCodes.GENERAL_ERROR);
+    }
+  }
+
   subscribeFitToJob(setter) {
     this.registerToUnsubscribe(this.fitToJob.subscribe(setter));
+  }
+
+  subscribeJobsPerSkill(setter) {
+    this.registerToUnsubscribe(this.jobsPerSkill.subscribe(setter));
   }
 }

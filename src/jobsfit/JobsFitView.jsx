@@ -72,10 +72,13 @@ export default function JobsFitView() {
   const [controller] = useState(() => new JobsFitController());
 
   const [fitToJob, setFitToJob] = useState([]);
+  const [jobsPerSkill, setJobsPerSkill] = useState([]);
 
   useEffect(() => {
     controller.subscribeFitToJob(setFitToJob);
+    controller.subscribeJobsPerSkill(setJobsPerSkill);
     controller.fetchFitToJob();
+    controller.fetchJobsPerSkill();
   }, []);
 
   const fitToJobExplainText = useMemo(
@@ -91,9 +94,25 @@ export default function JobsFitView() {
         <Grid
           container
           justify="center"
+          spacing={2}
         >
           <Grid container item xs={12} sm={6}>
             {renderJobIndicator(classes, formatMessage, fitToJob, fitToJobExplainText, 'jobsfits')}
+          </Grid>
+          <Grid container item xs={12} spacing={2}>
+            {
+              jobsPerSkill && jobsPerSkill.map((jobPerSkill) => (
+                <Grid item xs={4} sm={3} md={2}>
+                  <Card style={{ width: '100%' }}>
+                    <CardHeader title={jobPerSkill.name} />
+                    <CardContent>
+                      {jobPerSkill.count}
+                      jobs
+                    </CardContent>
+                  </Card>
+                </Grid>
+              ))
+            }
           </Grid>
         </Grid>
       </LayoutBase>
