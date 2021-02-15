@@ -1,10 +1,12 @@
 import { BehaviorSubject } from 'rxjs';
 import ApiCaller from '../api/ApiCaller';
+import BaseController from '../utils/BaseController';
 import ErrorCodes from '../utils/ErrorCodes';
 import Logger from '../utils/Logger';
 
-export default class HomeController {
+export default class HomeController extends BaseController {
   constructor() {
+    super();
     this.username = new BehaviorSubject('');
     this.usernameValidationErrors = new BehaviorSubject(undefined);
     this.subscriptions = [];
@@ -16,9 +18,13 @@ export default class HomeController {
     }
     const usernameValue = this.username.getValue();
     try {
-      const response = await ApiCaller.fetch('/enter', 'POST', { username: usernameValue });
+      const response = await ApiCaller.fetch('/profile/v1/checkuser', 'POST', { username: usernameValue });
       if (response.isError) {
-        this.usernameValidationErrors.next(response.errorCode);
+        this.usernameValidationErrors.next(response.errorCodes[0]);
+      }
+      if (!response.ok.exists) {
+        this.usernameValidationErrors.next('error.usernotexists');
+        return;
       }
     } catch (e) {
       Logger.logError(e);
@@ -37,17 +43,11 @@ export default class HomeController {
   }
 
   subscribeUsername(setter) {
-    const subscription = this.username.subscribe(setter);
-    this.subscriptions.push(subscription);
+    this.registerToUnsubscribe(this.username.subscribe(setter));
   }
 
   subscribeUsernameValidationsErrors(setter) {
-    const subscription = this.usernameValidationErrors.subscribe(setter);
-    this.subscriptions.push(subscription);
-  }
-
-  unsubscribeAll() {
-    this.subscriptions.forEach((subscriptions) => { subscriptions.unsubscribe(); });
+    this.registerToUnsubscribe(this.usernameValidationErrors.subscribe(setter));
   }
 
   updateUserName(value) {

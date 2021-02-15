@@ -23,7 +23,7 @@ const useStyles = createUseStyles({
 });
 
 export default function HomeView() {
-  const { formatMessage: messageFormatter } = useIntl();
+  const { formatMessage } = useIntl();
   const [controller] = useState(() => new HomeController());
   const [username, setUsername] = useState('');
   const [usernameValidationErrors, setUsernameValidationErrors] = useState('');
@@ -60,16 +60,16 @@ export default function HomeView() {
       >
         <Grid container item xs={11} sm={6} md={3}>
           <Grid item className={classes.container}>
-            <h1>{messageFormatter({ id: 'my genome' })}</h1>
+            <h1>{formatMessage({ id: 'my genome' })}</h1>
             <form autoComplete="on" className={classes.form} onSubmit={onEnterHandler} noValidate>
               <TextField
                 error={usernameValidationErrors !== undefined}
-                inputProps={{ 'aria-label': messageFormatter({ id: 'torre.co username' }) }}
+                inputProps={{ 'aria-label': formatMessage({ id: 'torre.co username' }) }}
                 helperText={
                   usernameValidationErrors
-                  && messageFormatter({ id: usernameValidationErrors })
+                  && formatMessage({ id: usernameValidationErrors })
                 }
-                label={messageFormatter({ id: 'torre.co username' })}
+                label={formatMessage({ id: 'torre.co username' })}
                 onChange={onUsernameChangeHandler}
                 required
                 value={username}
@@ -77,7 +77,7 @@ export default function HomeView() {
               />
               <div className={classes.enterContainer}>
                 <Button className={classes.enter} color="primary" size="large" type="submit" variant="contained">
-                  {messageFormatter({ id: 'enter' })}
+                  {formatMessage({ id: 'enter' })}
                 </Button>
               </div>
             </form>
