@@ -14,7 +14,7 @@ phases:
       - export NODE_OPTIONS=--max_old_space_size=6144
       - echo Build started on `date`      
       - echo   $COMMIT_HASH
-      - export REACT_APP_VERSION=$COMMIT_HASH && export REACT_APP_DATE="`date`" && export REACT_BASE_URL_API=$REACT_BASE_URL_API && yarn run build --max-old-space-size=6144   
+      - export REACT_APP_VERSION=$COMMIT_HASH && export REACT_APP_DATE="`date`" && export REACT_APP_BASE_URL_API=$REACT_BASE_URL_API && yarn run build --max-old-space-size=6144   
   post_build:
     commands:      
 artifacts:
