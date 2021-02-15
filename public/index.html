@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="height: 100%;">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -35,9 +35,10 @@
       ;e.amplitude=n})(window,document);
       
       amplitude.getInstance().init("%REACT_APP_AMPLITUDE_API_KEY%");
+      window.BASE_URL_API = "%REACT_BASE_URL_API%";
       </script>
   </head>
-  <body>
+  <body style="height: 100hv;">
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>    
   </body>
